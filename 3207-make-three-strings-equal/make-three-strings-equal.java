@@ -7,7 +7,6 @@ class Solution {
         int min=Math.min(l1,Math.min(l2,l3));
         int ans=(l1-min)+(l2-min)+(l3-min);
         for(int i=0;i<min;i++){
-                System.out.println(i);
             if(s1.charAt(i)==s2.charAt(i)&&s2.charAt(i)==s3.charAt(i)){
                 continue;
             }
