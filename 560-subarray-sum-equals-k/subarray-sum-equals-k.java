@@ -1,17 +1,17 @@
 class Solution {
     public int subarraySum(int[] nums, int k) {
-      int len=0;
-      int cnt=0;
-      for(int i=0;i<nums.length;i++){
-        int s=0;
-        for(int j=i;j<nums.length;j++){
-            s+=nums[j];
-            if(s==k){
-                len=Math.max(len,j-i+1);  
-                cnt++;
-                          }
+        int cnt=0;
+        int presum=0;
+        HashMap<Integer,Integer> precnt=new HashMap<>();
+        precnt.put(0,1);
+        for(int i=0;i<nums.length;i++){
+            presum+=nums[i];
+            int remove=presum-k;
+            if(precnt.containsKey(remove)){
+                cnt+=precnt.get(remove);
+            }
+            precnt.put(presum,precnt.getOrDefault(presum,0)+1);
         }
-      } 
-      return cnt; 
+        return cnt;
     }
 }
